@@ -116,7 +116,7 @@ router.post("/change", (req, res) => {
               res.set({
                 'Content-Type': 'application/json'
               });
-              res.status(200).send({'text': "Got it, " + foundWinner.firstName + " beat " + foundLoser.firstName + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
+              res.status(200).send({'text': "Got it, " + aText[0] + " beat " + aText[2] + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
               res.end();
             });
           });
@@ -141,7 +141,7 @@ router.post("/change", (req, res) => {
               res.set({
                 'Content-Type': 'application/json'
               });
-              res.status(200).send({'text': "Got it, " + foundWinner.firstName + " beat " + foundLoser.firstName + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
+              res.status(200).send({'text': "Got it, " + aText[0] + " beat " + aText[2] + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
               res.end();
             });
           });
