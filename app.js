@@ -18,6 +18,7 @@ db.on('open', () => {
 // ============ Setup routes ===================
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use('*', personRoutes);
 app.listen(process.env.PORT || 3000, process.env.IP,  () => {
