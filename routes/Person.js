@@ -71,7 +71,7 @@ router.post("/", (req, res) => {
               res.set({
                 'Content-Type': 'application/json'
               });
-              res.status(200).send({'text': "Welcome" + " " + newlyCreatedPerson.firstName + " you were entered into the rankings!"});
+              res.status(200).send({'text': "Welcome" + " " + newlyCreatedPerson.firstName + " you were entered into the rankings!" + " Check https://internpoolranking.herokuapp.com/ for current rankings!"});
           });
         }).catch((err) => {
           console.log(err);
@@ -81,11 +81,14 @@ router.post("/", (req, res) => {
 });
 
 router.post("/change", (req, res) => {
-  var sWinnerFirstName = req.body.winnerFirstName;
-  var sWinnerLastName = req.body.winnerLastName;
-  var sLoserFirstName = req.body.loserFirstName;
-  var sLoserLastName = req.body.loserLastName;
-  var bIsPool = req.body.isPool;
+  if (req.body.text) {
+     aText = req.body.text.split(" ");
+  }
+  var sWinnerFirstName = req.body.winnerFirstName || aText[0];
+  var sWinnerLastName = req.body.winnerLastName || aText[1];
+  var sLoserFirstName = req.body.loserFirstName || aText[2];
+  var sLoserLastName = req.body.loserLastName || aText[3];
+  var bIsPool = req.body.isPool || aText[4] === "pool";
   Person.find({firstName: sWinnerFirstName, lastName: sWinnerLastName}, (err, foundWinner) => {
     Person.find({firstName: sLoserFirstName, lastName: sLoserLastName}, (err, foundLoser) => {
       var elo = new Elo();
@@ -110,6 +113,10 @@ router.post("/change", (req, res) => {
               if (err) {
                 console.log(err);
               }
+              res.set({
+                'Content-Type': 'application/json'
+              });
+              res.status(200).send({'text': "Got it, " + foundWinner.firstName + " beat " + foundLoser.firstName + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
               res.end();
             });
           });
@@ -131,6 +138,10 @@ router.post("/change", (req, res) => {
               if (err) {
                 console.log(err);
               }
+              res.set({
+                'Content-Type': 'application/json'
+              });
+              res.status(200).send({'text': "Got it, " + foundWinner.firstName + " beat " + foundLoser.firstName + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
               res.end();
             });
           });
