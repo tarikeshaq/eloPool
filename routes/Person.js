@@ -23,6 +23,12 @@ router.get("*", (req, res) => {
 
 // CREATE A NEW PERSON WITH A CLEAN SLATE OF SCORES
 router.post("/add", (req, res) => {
+  if (req.body.channel_name != "pool-ranking") {
+    res.set({
+      'Content-Type': 'application/json'
+    });
+    res.status(200).send({'text': 'Sorry, you need to be in the pool-ranking channel to run this command'})
+  }
   var aText;
   if (req.body.text) {
      aText = req.body.text.split(" ");
@@ -81,6 +87,12 @@ router.post("/add", (req, res) => {
 });
 
 router.post("/change", (req, res) => {
+  if (req.body.channel_name != "pool-ranking") {
+    res.set({
+      'Content-Type': 'application/json'
+    });
+    res.status(200).send({'text': 'Sorry, you need to be in the pool-ranking channel to run this command'})
+  }
   if (req.body.text) {
      aText = req.body.text.split(" ");
   }
