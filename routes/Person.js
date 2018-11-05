@@ -4,7 +4,7 @@ const Person = require("../models/Person");
 const TTStats = require("../models/TTStats");
 const PoolStats = require("../models/PoolStats");
 const Elo = require("../EloCalculator");
-router.get("/", (req, res) => {
+router.get("*", (req, res) => {
   TTStats.find({}, (err, foundTTStats) => {
     PoolStats.find({}, (err, foundPoolStats) => {
       function compare(statA, statB) {
@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 });
 
 // CREATE A NEW PERSON WITH A CLEAN SLATE OF SCORES
-router.post("/", (req, res) => {
+router.post("/add", (req, res) => {
   var aText;
   if (req.body.text) {
      aText = req.body.text.split(" ");
