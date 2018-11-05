@@ -23,8 +23,12 @@ router.get("/", (req, res) => {
 
 // CREATE A NEW PERSON WITH A CLEAN SLATE OF SCORES
 router.post("/", (req, res) => {
-  var firstName = req.body.firstName;
-  var lastName = req.body.lastName;
+  var aText;
+  if (req.body.text) {
+     aText = req.body.text.split(" ");
+  }
+  var firstName = req.body.firstName || aText[0];
+  var lastName = req.body.lastName || aText[1];
   var newPerson = {
     firstName: firstName,
     lastName: lastName
@@ -64,6 +68,10 @@ router.post("/", (req, res) => {
               if (err) {
                 console.log(err);
               }
+              res.set({
+                'Content-Type': 'application/json'
+              });
+              res.status(200).send({'text': "Welcome" + " " + newlyCreatedPerson.firstName + " you were entered into the rankings!"});
           });
         }).catch((err) => {
           console.log(err);
@@ -102,6 +110,7 @@ router.post("/change", (req, res) => {
               if (err) {
                 console.log(err);
               }
+              res.end();
             });
           });
         });
@@ -122,6 +131,7 @@ router.post("/change", (req, res) => {
               if (err) {
                 console.log(err);
               }
+              res.end();
             });
           });
         });
