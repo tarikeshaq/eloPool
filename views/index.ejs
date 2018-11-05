@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SAP Intern Rankings</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="jumbotron">
+        <h1>Welcome to the official SAP Intern Pool and Table Tennis rankings!</h1>
+        <p>Check out the top players, and make sure to update your own wins on slack, Contact Tarik Eshaq if you don't know how</p>
+      </header>
+    </div>
+    <div class="contianer both">
+      <div class="col-md-6" style="width: 50%; display:flex; flex-wrap: wrap;">
+        <div class="panel-group" style="width: 100%">
+          <div class="panel panel-default" style="width: 100%">
+            <h2 class="panel-body">Table Tennis Rankings</h2>
+            <div class="container" style="height: 100%; width: 100%;">
+              <ol class="list-group">
+                <% TTStats.forEach((TTStat) => { %>
+                  <li class="list-group-item"><%= TTStat.firstName + " " + TTStat.lastName + " - " + Math.round(TTStat.elo)%></li>
+                  <% }) %>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" style="width: 50%; display:flex; flex-wrap: wrap;">
+        <div class="panel-group" style="width: 100%">
+          <div class="panel panel-default" style="width: 100%">
+            <h2 class="panel-body">Pool Rankings</h2>
+            <div class="container" style="height: 100%; width: 100%;">
+              <ol class="list-group">
+                <% PoolStats.forEach((PoolStat) => { %>
+                  <li class="list-group-item"><%= PoolStat.firstName + " " + PoolStat.lastName + " - " + Math.round(PoolStat.elo)%></li>
+                  <% }) %>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="container">
+      <form  action="/Person" method="post">
+        <input type="text" name="firstName" value="">
+        <input type="text" name="lastName" value="">
+        <button>Submit!</button>
+      </form>
+    </div>
+    <div class="container">
+      <form  action="/Person/Change" method="post">
+        <input type="text" name="winnerFirstName" value="">
+        <input type="text" name="winnerLastName" value="">
+        <input type="text" name="loserFirstName" value="">
+        <input type="text" name="loserLastName" value="">
+        <input type="checkbox" name="isPool" value="">
+        <button>Submit!</button>
+      </form>
+    </div> -->
+  </body>
+</html>

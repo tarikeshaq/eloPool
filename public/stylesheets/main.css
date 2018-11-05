@@ -1,0 +1,22 @@
+body {
+  background-color: #87cefa;
+  font-family: 'Roboto', sans-serif;
+}
+.both {
+  width: 100%
+}
+.row {
+  position: absolute;
+  display: inline-block;
+}
+.list-group {
+    list-style: decimal inside;
+}
+
+.list-group-item {
+    display: list-item;
+}
+
+.panel {
+  border-radius: 10px;
+}
