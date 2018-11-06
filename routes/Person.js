@@ -27,7 +27,7 @@ router.post("/add", (req, res) => {
     res.set({
       'Content-Type': 'application/json'
     });
-    res.status(200).send({'text': 'Sorry, you need to be in the pool-ranking channel to run this command'})
+    res.status(200).send({"response_type": "in_channel", 'text': 'Sorry, you need to be in the pool-ranking channel to run this command'})
   } else {
     var aText;
     if (req.body.text) {
@@ -77,7 +77,7 @@ router.post("/add", (req, res) => {
                 res.set({
                   'Content-Type': 'application/json'
                 });
-                res.status(200).send({'text': "Welcome" + " " + newlyCreatedPerson.firstName + " you were entered into the rankings!" + " Check https://internpoolranking.herokuapp.com/ for current rankings!"});
+                res.status(200).send({"response_type": "in_channel", 'text': "Welcome" + " " + newlyCreatedPerson.firstName + " you were entered into the rankings!" + " Check https://internpoolranking.herokuapp.com/ for current rankings!"});
             });
           }).catch((err) => {
             console.log(err);
@@ -92,7 +92,7 @@ router.post("/change", (req, res) => {
     res.set({
       'Content-Type': 'application/json'
     });
-    res.status(200).send({'text': 'Sorry, you need to be in the pool-ranking channel to run this command'})
+    res.status(200).send({"response_type": "in_channel", 'text': 'Sorry, you need to be in the pool-ranking channel to run this command'})
   } else {
     if (req.body.text) {
        aText = req.body.text.split(" ");
@@ -129,7 +129,7 @@ router.post("/change", (req, res) => {
                 res.set({
                   'Content-Type': 'application/json'
                 });
-                res.status(200).send({'text': "Got it, " + aText[0] + " beat " + aText[2] + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
+                res.status(200).send({"response_type": "in_channel", 'text': "Got it, " + aText[0] + " beat " + aText[2] + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
                 res.end();
               });
             });
@@ -154,7 +154,7 @@ router.post("/change", (req, res) => {
                 res.set({
                   'Content-Type': 'application/json'
                 });
-                res.status(200).send({'text': "Got it, " + aText[0] + " beat " + aText[2] + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
+                res.status(200).send({"response_type": "in_channel", 'text': "Got it, " + aText[0] + " beat " + aText[2] + " in " + aText[4] + ". Check https://internpoolranking.herokuapp.com/ for current rankings!"});
                 res.end();
               });
             });
